@@ -1,0 +1,43 @@
+# 🕒 Práctica 2B: Interrupción por Timer (ESP32)
+
+**Asignatura:** Programación de Sistemas Embebidos  
+**Objetivo:** Generar interrupciones periódicas precisas mediante un temporizador de hardware sin bloquear el `loop()`.
+
+---
+
+## 📋 Descripción
+Esta práctica demuestra el uso de **timers de hardware** del ESP32 para crear una interrupción cada **1 segundo**.  
+La ISR (`onTimer`) se ejecuta automáticamente y el programa principal queda completamente libre.
+
+**Características clave:**
+- Timer 0 con prescaler 80 (1 µs por tick)
+- Auto-reload activado
+- ISR en RAM (`IRAM_ATTR`)
+- Protección de variables con `portMUX`
+- Salida por Monitor Serial cada segundo
+
+---
+
+## 🛠️ Materiales
+- Placa **ESP32 DevKit** (cualquier variante)
+- Cable USB
+- **Ningún componente externo** (solo USB para alimentación y monitor serial)
+
+## Salidas por monitor
+
+[12:34:56] An interrupt has occurred. Total number: 1
+[12:34:57] An interrupt has occurred. Total number: 2
+...
+
+## 🚀 Cómo ejecutar
+
+- Abre el proyecto en PlatformIO (VS Code).
+- Conecta el ESP32 por USB.
+- Haz clic en Upload (Ctrl+Alt+U).
+- Abre el Serial Monitor (icono del enchufe).
+- Verás una línea cada segundo:
+
+An interrupt has occurred. Total number: 1
+An interrupt has occurred. Total number: 2
+An interrupt has occurred. Total number: 3
+...
