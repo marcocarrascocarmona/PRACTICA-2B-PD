@@ -40,6 +40,7 @@ board = esp32dev
 framework = arduino
 monitor_speed = 115200
 upload_speed = 921600
+```
 Funcionamiento
 
 El programa configura un temporizador hardware del ESP32 para generar una interrupción cada segundo.
@@ -56,6 +57,7 @@ Cada vez que se produce la interrupción, se ejecuta la función onTimer(), que 
 Después, en el loop(), se comprueba si ha ocurrido una interrupción. Si es así, se actualiza el contador total y se muestra un mensaje por el monitor serial.
 
 Código principal
+```cpp
 #include <Arduino.h>
 
 volatile int interruptCounter;
@@ -92,6 +94,7 @@ void loop() {
     Serial.println(totalInterruptCounter);
   }
 }
+```
 Explicación del timer
 
 El ESP32 utiliza un reloj base de 80 MHz.
